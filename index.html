@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>حاسبة الوكلاء</title>
+
+<style>
+body {
+  font-family: Arial, Tahoma;
+  direction: rtl;
+  text-align: center;
+  margin-top: 80px;
+  background-color: #f5f5f5;
+}
+
+.container {
+  background: white;
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.input-box {
+  position: relative;
+  margin-top: 10px;
+}
+
+input {
+  padding: 12px 45px 12px 12px;
+  font-size: 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.currency {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #444;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>حاسبة الوكلاء</h2>
+
+<div class="input-box">
+  <span class="currency">د.ع</span>
+  <input type="text" id="balance" placeholder="ادخل مبلغ الرصيد" oninput="calc()">
+</div>
+
+<div class="result" id="calcResult">
+كاش باك الوكيل: ---
+</div>
+
+<div class="result" id="totalResult">
+المجموع النهائي: ---
+</div>
+
+</div>
+
+<script>
+function calc() {
+
+  let input = document.getElementById("balance");
+  let value = input.value.replace(/,/g, '').replace(/[^\d]/g, '');
+
+  if(value === ""){
+    document.getElementById("calcResult").innerText = "كاش باك الوكيل: ---";
+    document.getElementById("totalResult").innerText = "الرصيد المستحق: ---";
+    return;
+  }
+
+  let balance = Number(value);
+
+  let result = (balance / 21000) * 4000;
+  let total = balance + result;
+
+  input.value = balance.toLocaleString();
+
+  document.getElementById("calcResult").innerText =
+   "كاش باك الوكيل: " + Math.round(result).toLocaleString() + " د.ع";
+
+  document.getElementById("totalResult").innerText =
+   "المجموع النهائي: " + Math.round(total).toLocaleString() + " د.ع";
+}
+</script>
+
+</body>
+</html>
