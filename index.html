@@ -61,7 +61,7 @@ input {
 
 <div class="input-box">
   <span class="currency">د.ع</span>
-  <input type="text" id="balance" placeholder="ادخل مبلغ الرصيد" oninput="calc()">
+  <input type="text" id="balance" placeholder="ادخل الرصيد" oninput="calc()">
 </div>
 
 <div class="result" id="calcResult">
@@ -69,7 +69,7 @@ input {
 </div>
 
 <div class="result" id="totalResult">
-المجموع النهائي: ---
+الرصيد المستحق: ---
 </div>
 
 </div>
@@ -97,7 +97,7 @@ function calc() {
    "كاش باك الوكيل: " + Math.round(result).toLocaleString() + " د.ع";
 
   document.getElementById("totalResult").innerText =
-   "المجموع النهائي: " + Math.round(total).toLocaleString() + " د.ع";
+   "الرصيد المستحق: " + Math.round(total).toLocaleString() + " د.ع";
 }
 </script>
 
